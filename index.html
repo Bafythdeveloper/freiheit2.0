@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Freiheit2.0 - Europe Adventure</title>
+    </head>
+    <body id="bg" style="background-image: url('https://codehs.com/uploads/bddd4f591fa7a0da66d4f5b0354e9661'); background-size: cover; background-repeat: no-repeat; height: 100vh; margin: 0; color: green">
+        <center>
+            <h1>Welcome to Freiheit2.0 - Europe Adventure</h1>
+        </center>
+
+        <img id="character" src="https://codehs.com/uploads/fd5245e400333f2f42f4ed67c6c0e2ed" alt="German character" style="position: fixed; bottom: 0; left: 0; width: 700px;">
+        
+        <div id="speech" style="position: fixed; bottom: 230px; left: 300px; background: white; padding: 15px; border-radius: 15px; border: 2px solid black; max-width: 300px; font-family: Arial;">
+            Welcome to Freiheit2.0 - Europe Adventure! My name is Jörg and I will teach you how to play this game. Your goal in this game is to explore the 5 most important countries in the European Union and speak to native speakers in their native language. At the end of the game you will be able to speak simple phrases in 5 languages! Let's go and explore Berlin, which is the Capital city of Germany!
+        </div>        
+        
+        <button onclick="document.getElementById('bg').style.backgroundImage = 'url(https://codehs.com/uploads/83551da49750b5858e766e2fa470d940)'; document.getElementById('speech').innerText = 'Herzlich willkommen in Berlin! Behind me is the famous Brandenburg Gate which is a very important Sehenswürdigkeit (landmark) in Germany! Now it\'s your turn to practice. Say \'Hallo! Wie geht es dir?\' back to me!'; this.style.display='none';" style="position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; font-size: 18px; color: green">
+            Next / Nächste
+        </button>
+
+        <input id="user-input" type="text" placeholder="Type here..." style="position: fixed; bottom: 80px; right: 20px; padding: 10px; font-size: 16px;">
+
+        <!-- ONE SINGLE SUBMIT BUTTON -->
+        <button onclick="checkAnswer()" style="position: fixed; bottom: 80px; right: 230px; padding: 10px 15px; font-size: 16px; color: green;">
+            Submit
+        </button>
+
+        <!-- GAME LOGIC SCRIPT -->
+        <script>
+            let step = 1;
+
+            function checkAnswer() {
+                let input = document.getElementById('user-input').value.toLowerCase().trim();
+                let speech = document.getElementById('speech');
+                let bg = document.getElementById('bg');
+                let char = document.getElementById('character');
+
+                if (step === 1 && input.includes('hallo! wie geht es dir?')) {
+                    speech.innerText = "Sehr gut! Now say 'Ja'.";
+                    document.getElementById('user-input').value = '';
+                    step = 2;
+                } 
+                else if (step === 2 && input === 'ja') {
+                    bg.style.backgroundImage = "url('https://codehs.com/uploads/70c0c4114985a1d856681cf648de0bd7')";
+                    char.src = "https://codehs.com/uploads/57fa49d1d23a6167bc65b15156ebd30b";
+                    speech.innerText = "Welkom at Schiphol Airport in the Netherlands, the gateway to Europe! Say 'Goedemorgen! Ik ben (your name) to me!";
+                    document.getElementById('user-input').value = '';
+                    step = 3;
+                } 
+                else if (step === 3 && input.includes('goedemorgen')) {
+                    bg.style.backgroundImage = "url('https://codehs.com/uploads/e6f6da67db292800c2575051730ee8a8')";
+                    char.src = "https://codehs.com/uploads/165c75c5e644bd51c69a7835c5fc8996";
+                    speech.innerText = "Heel goed! Now welcome to Paris, France! Say 'Bonjour! Comment ca va?' back to me!";
+                    document.getElementById('user-input').value = '';
+                    step = 4;
+                } 
+                else if (step === 4 && input.includes('bonjour')) {
+                    bg.style.backgroundImage = "url('https://codehs.com/uploads/ca609e3b8658f927fa5a224c716ed7fe')";
+                    char.src = "https://codehs.com/uploads/ef489b6e398029d554abe4d8c677aa63";
+                    speech.innerText = "Très bien! Now welcome to Madrid, Spain! Say 'Hola! Commo estas?' back to me!";
+                    document.getElementById('user-input').value = '';
+                    step = 5;
+                } 
+                else if (step === 5 && input.includes('hola')) {
+                    bg.style.backgroundImage = "url('https://codehs.com/uploads/2d42d325ae453cf978617eeae504fd81')";
+                    char.src = "https://codehs.com/uploads/d14877b7bae210a161197f6b87d2aa25";
+                    speech.innerText = "¡Muy bien! Now welcome to Lisbon, Portugal! Say 'Olá! Como vai você?' back to me!";
+                    document.getElementById('user-input').value = '';
+                    step = 6;
+                } 
+                else if (step === 6 && (input.includes('ola') || input.includes('ola'))) {
+                    bg.style.backgroundImage = "url('https://codehs.com/uploads/d828817dd198ffd0938fe7f352cc669c')";
+                    speech.innerText = "Congratulations! You have visited 5 EU Member countries. It is now time to leave the EU. Thank you for playing and we hope you will visit the European Union again! :)";
+                    document.getElementById('user-input').value = '';
+                    step = 7;
+                } 
+                else {
+                    // Wrong answer -> sends them back to the start!
+                    location.reload();
+                }
+            }
+        </script>
+    </body>
+</html>
